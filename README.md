@@ -1,6 +1,6 @@
 # The CQRS Event Sourcing Coffee Shop Service  
 
-##[Workplace](https://github.com/EddieChoCho/scalable-coffee-shop/tree/master/coffee-shop-blueprint)
+[Workplace](https://github.com/EddieChoCho/scalable-coffee-shop/tree/master/coffee-shop-blueprint)
 
 ## Reference
 * [Greg Young - CQRS and Event Sourcing - Code on the Beach 2014](https://youtu.be/JHGkaShoyNs)

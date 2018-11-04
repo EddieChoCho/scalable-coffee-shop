@@ -1,33 +1,44 @@
 package eddie.coffeeshopblueprint.service;
 
-import eddie.coffeeshopblueprint.events.BeansFetched;
-import eddie.coffeeshopblueprint.events.BeansStored;
-import eddie.coffeeshopblueprint.events.OrderBeansReserved;
-import eddie.coffeeshopblueprint.events.OrderFailedBeansNotAvailable;
+import eddie.coffeeshopblueprint.events.*;
+import eddie.coffeeshopblueprint.listener.EventSerializer;
 import eddie.coffeeshopblueprint.store.BeanStorage;
-import eddie.coffeeshopblueprint.store.EventStore;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class BeanCommandService {
 
-    private EventStore eventStore;
+    public final String BEANS_TOPIC = "beans";
     private BeanStorage beanStorage;
+    private EventSerializer eventSerializer;
+    private KafkaTemplate<Integer, String> template;
 
-    public BeanCommandService(final EventStore eventStore, final BeanStorage beanStorage){
-        this.eventStore = eventStore;
+    @Autowired
+    public BeanCommandService(final BeanStorage beanStorage, final EventSerializer eventSerializer, final KafkaTemplate<Integer, String> template){
         this.beanStorage = beanStorage;
+        this.eventSerializer = eventSerializer;
+        this.template = template;
     }
 
     public void storeBeans(final String beanOrigin, final int amount) {
-        eventStore.publish(new BeansStored(beanOrigin, amount));
+        CoffeeEvent event = new BeansStored(beanOrigin, amount);
+        template.send(BEANS_TOPIC,eventSerializer.serialize(event));
     }
 
     public void reserveBeans(final String beanOrigin, final UUID orderId) {
-        if (beanStorage.getRemainingAmount(beanOrigin) > 0)
-            eventStore.publish(new OrderBeansReserved(orderId), new BeansFetched(beanOrigin));
-        else
-            eventStore.publish(new OrderFailedBeansNotAvailable(orderId));
+        if (beanStorage.getRemainingAmount(beanOrigin) > 0) {
+            CoffeeEvent orderBeansReserved = new OrderBeansReserved(orderId);
+            CoffeeEvent beansFetched = new BeansFetched(beanOrigin);
+            template.send(BEANS_TOPIC,eventSerializer.serialize(orderBeansReserved));
+            template.send(BEANS_TOPIC,eventSerializer.serialize(beansFetched));
+        } else{
+            CoffeeEvent orderFailedBeansNotAvailable = new OrderFailedBeansNotAvailable(orderId);
+            template.send(BEANS_TOPIC,eventSerializer.serialize(orderFailedBeansNotAvailable));
+        }
     }
 
 }

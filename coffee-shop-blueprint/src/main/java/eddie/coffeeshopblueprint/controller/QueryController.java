@@ -5,6 +5,7 @@ import eddie.coffeeshopblueprint.model.CoffeeOrder;
 import eddie.coffeeshopblueprint.store.BeanStorage;
 import eddie.coffeeshopblueprint.store.CoffeeOrders;
 import eddie.coffeeshopblueprint.store.EventStore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class QueryController {
     private BeanStorage beanStorage;
     private EventStore eventStore;
 
+    @Autowired
     public QueryController(final CoffeeOrders coffeeOrders, final BeanStorage beanStorage, final EventStore eventStore){
         this.coffeeOrders = coffeeOrders;
         this.beanStorage = beanStorage;

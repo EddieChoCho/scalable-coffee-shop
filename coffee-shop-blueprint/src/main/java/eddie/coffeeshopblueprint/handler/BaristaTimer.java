@@ -1,14 +1,16 @@
 package eddie.coffeeshopblueprint.handler;
 
 import eddie.coffeeshopblueprint.service.BaristaCommandService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
-
-
+@Service
 public class BaristaTimer {
 
     private BaristaCommandService baristaService;
 
+    @Autowired
     public BaristaTimer(final BaristaCommandService baristaService){
         this.baristaService = baristaService;
     }

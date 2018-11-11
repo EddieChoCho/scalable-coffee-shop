@@ -11,6 +11,7 @@
         <module>coffee-shop-component</module>
         <module>bean-service</module>
         <module>barista-service</module>
+        <module>monolithic-coffee-shop-service</module>
     </modules>
     <packaging>pom</packaging>
 

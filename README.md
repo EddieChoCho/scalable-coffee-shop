@@ -1,7 +1,5 @@
 # The CQRS Event Sourcing Coffee Shop Service  
 
-[Workplace](https://github.com/EddieChoCho/scalable-coffee-shop/tree/master/coffee-shop-blueprint)
-
 ## Reference
 * [Greg Young - CQRS and Event Sourcing - Code on the Beach 2014](https://youtu.be/JHGkaShoyNs)
 * [Sebastian Daschner: Video Course — Event Sourcing, Distributed Systems & CQRS](https://blog.sebastian-daschner.com/entries/event_sourcing_cqrs_video_course)
@@ -21,7 +19,10 @@ https://dzone.com/articles/running-apache-kafka-on-windows-os
 
 ## Todo
 - [x] Replace EventStore with message queue
-- [ ] Modify event listener
+- [x] Modify event listener
+- [x] Create Multiple Service for Different Domain
 - [ ] Separate command and query modules
 - [ ] Cooperate with database
  
+ ## Sequence Diagram
+![alt text](https://raw.githubusercontent.com/EddieChoCho/scalable-coffee-shop/master/coffee-shop-blueprint/src/main/resources/images/The%20Scalable%20Coffee%20Shop.png)

@@ -1,11 +1,11 @@
-package eddie.coffeeshopblueprint.listener;
+package eddie.coffeeshopblueprint.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import eddie.coffeeshopblueprint.events.CoffeeEvent;
 import org.springframework.stereotype.Component;
 
-import static eddie.coffeeshopblueprint.listener.EventSerializer.CLASSNAME;
+import static eddie.coffeeshopblueprint.serializer.EventSerializer.CLASSNAME;
 
 @Component
 public class EventDeserializer {

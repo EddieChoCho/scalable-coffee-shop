@@ -1,4 +1,4 @@
-package eddie.coffeeshopblueprint.listener;
+package eddie.coffeeshopblueprint.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

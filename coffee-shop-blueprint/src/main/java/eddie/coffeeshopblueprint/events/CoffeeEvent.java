@@ -1,12 +1,16 @@
 package eddie.coffeeshopblueprint.events;
 
 import com.google.gson.GsonBuilder;
+import lombok.Data;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.time.Instant;
 import java.util.Objects;
 
+@Data
 public abstract class CoffeeEvent {
+
+    private final String eventName = this.getClass().getSimpleName();
 
     @JsonbProperty
     private final Instant instant;

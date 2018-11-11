@@ -24,3 +24,5 @@ https://dzone.com/articles/running-apache-kafka-on-windows-os
 - [ ] Separate command and query modules
 - [ ] Cooperate with database
  
+ ## Sequence Diagram
+![alt text](https://raw.githubusercontent.com/EddieChoCho/scalable-coffee-shop/master/coffee-shop-blueprint/src/main/resources/images/The%20Scalable%20Coffee%20Shop.png)

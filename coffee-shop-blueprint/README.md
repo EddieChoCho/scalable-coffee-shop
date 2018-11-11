@@ -19,7 +19,8 @@ https://dzone.com/articles/running-apache-kafka-on-windows-os
 
 ## Todo
 - [x] Replace EventStore with message queue
-- [ ] Modify event listener
+- [x] Modify event listener
+- [x] Create Multiple Service for Different Domain
 - [ ] Separate command and query modules
 - [ ] Cooperate with database
  

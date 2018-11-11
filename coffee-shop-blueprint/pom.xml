@@ -6,7 +6,13 @@
     <groupId>Eddie</groupId>
     <artifactId>coffee-shop-blueprint</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>orders-ervice</module>
+        <module>coffee-shop-component</module>
+        <module>bean-service</module>
+        <module>barista-service</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>coffee-shop-blueprint</name>
     <description>Blueprint project for CQRS ES coffee shop</description>
